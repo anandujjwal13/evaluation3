@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://anandujjwal13.github.io/evaluation3",
   "devDependencies": {
+    "gh-pages": "^0.12.0",
     "react-scripts": "0.9.3"
   },
   "dependencies": {
@@ -18,7 +19,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-     "predeploy": "npm run build",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   }
 }
