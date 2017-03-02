@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Header from './header'
 import Loading from './Loading'
-//import MovieList from './movie-list'
+import MovieList from './movie-list'
 import axios from 'axios'
 const rootUri = `https://movie-api-atlrumqzze.now.sh/movies-ref`
 
@@ -18,6 +18,7 @@ export default class App extends Component {
     })
   }
   selectActor(actor) {
+    console.log(actor)
     this.setState({ actor })
   }
   getAllActors() {
@@ -41,7 +42,7 @@ export default class App extends Component {
         actorsObject[actor].push(movie)
       })
     })
-    console.log(actorsObject)
+    return (actorsObject)
   }
 
   render() {
@@ -49,7 +50,7 @@ export default class App extends Component {
       <div>
         <Header actors={this.getAllActors()} selectActor={this.selectActor.bind(this)} />
 
-        {/*<MovieList normalisedData = {this.getActorsObject()} allMovies= {this.state.movies} actorName = {this.state.actor}/>*/}
+        <MovieList normalisedData = {this.getActorsObject()} allMovies= {this.state.movies} actorName = {this.state.actor}/>
 
       </div>
     )

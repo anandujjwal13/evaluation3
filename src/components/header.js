@@ -1,8 +1,8 @@
 import React from 'react'
-//import Actor from './actor'
+
 const getOptions = (actors) => {
   return actors.map((actor, index) => {
-    return (<option value={actor}>{actor}</option>)
+    return (<option key = {actor} value={actor}>{actor}</option>)
   })
 }
 

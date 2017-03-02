@@ -1,13 +1,24 @@
 import React from 'react';
 import ListItem from './list-item'
+
+const getColor = (rating) => {
+  if(rating === 5) return 'green'
+  if(rating === 3 || rating === 4) return 'blue'
+  return 'red'
+}
+
+
 const getResult= (moviesArray) => {
-moviesArray.map((movie)=>{
-return (<ListItem />)
+  
+return moviesArray.map((movie)=>{
+return (<ListItem key = {movie.id} movieName={movie.name} description={movie.description} rating={movie.rating} actors={movie.actors}  theme={movie.theme} releaseDate={movie.releaseDate} rateColor={getColor(movie.rating)}/>)
 })
 }
 
 export default ({normalisedData , actorName , allMovies}) => {
+  
 let moviesArray = (actorName === 'all') ? allMovies : normalisedData[actorName]
+
 return (
      <ul className="todo-list">
       {getResult(moviesArray)}
@@ -15,14 +26,3 @@ return (
 )
 }
 
-
-
-  /*const todos = todoList
-  let todoListItems = []
-  for (let key in normalisedData) {
-    todoListItems.push(<TodoListItem key={key}
-      item={todos[key]}
-      deleteItem={deleteItem}
-      updateItem={updateItem}
-      checkItem={checkItem} />)
-  }*/
