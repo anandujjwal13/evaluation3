@@ -9,7 +9,6 @@ export const getColor = (rating) => {
 
 
 const getResult = (moviesArray) => {
-
   return moviesArray.map((movie) => {
     return (
       <div>
@@ -21,9 +20,7 @@ const getResult = (moviesArray) => {
 }
 
 export default ({normalisedData, actorName, allMovies}) => {
-
   let moviesArray = (actorName === 'all') ? allMovies : normalisedData[actorName]
-
   return (
     <ul >
       {getResult(moviesArray)}

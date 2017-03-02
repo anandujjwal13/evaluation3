@@ -22,9 +22,11 @@ export default class App extends Component {
     const rootUri = `https://movie-api-atlrumqzze.now.sh/movies`
     return axios.get(rootUri)
   }
+
   selectActor(actor) {
     this.setState({ actor })
   }
+
   getAllActors(inputMovies) {
     const movies = inputMovies || this.state.movies
     const allActors = []
@@ -36,6 +38,7 @@ export default class App extends Component {
     })
     return (allActors)
   }
+
   getActorsObject(inputMovies) {
     const movies = inputMovies || this.state.movies
     const allActors = this.getAllActors()
@@ -58,7 +61,6 @@ export default class App extends Component {
         <Header actors={this.getAllActors()} selectActor={this.selectActor.bind(this)} />
         <hr />
         <MovieList normalisedData={this.getActorsObject()} allMovies={this.state.movies} actorName={this.state.actor} />
-
       </div>
     )
   }
