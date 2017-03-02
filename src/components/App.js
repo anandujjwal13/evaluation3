@@ -19,7 +19,7 @@ export default class App extends Component {
   }
 
   fetchMovies() {
-    const rootUri = `https://movie-api-atlrumqzze.now.sh/movies-ref`
+    const rootUri = `https://movie-api-atlrumqzze.now.sh/movies`
     return axios.get(rootUri)
   }
   selectActor(actor) {

@@ -21,7 +21,7 @@ export default ({movieName, description, rating, actors, theme, releaseDate, rat
         <ul >
           {getActorList(actors)}
         </ul>
-        <h3><span style={{ color: "red" }}>Release Date </span> {moment(releaseDate).format("Do MMM YYYY")}</h3>
+        <h3><span style={{ color: "red" }}>Release Date :</span> {moment(releaseDate).format("Do MMM YYYY")}</h3>
       </div>
     </li>
   )
