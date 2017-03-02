@@ -20,9 +20,10 @@ export default class App extends Component {
   selectActor(actor) {
     this.setState({ actor })
   }
-  getAllActors() {
+  getAllActors(inputMovies) {
+   const movies = inputMovies || this.state.movies
     const allActors = []
-    this.state.movies.forEach((movie) => {
+    movies.forEach((movie) => {
       movie.actors.forEach((actor) => {
         if (allActors.indexOf(actor) === -1)
           allActors.push(actor)
@@ -30,13 +31,15 @@ export default class App extends Component {
     })
     return (allActors)
   }
-  getActorsObject() {
-    const allActors = this.getAllActors()
+  getActorsObject(inputMovies) {
+    const movies = inputMovies || this.state.movies
+    const allActors = this.getAllActors() 
     const actorsObject = {}
     allActors.forEach((actor) => {
       actorsObject[actor] = []
     })
-    this.state.movies.forEach((movie) => {
+    
+    movies.forEach((movie) => {
       movie.actors.map((actor) => {
         actorsObject[actor].push(movie)
       })
