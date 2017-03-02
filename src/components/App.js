@@ -18,7 +18,6 @@ export default class App extends Component {
     })
   }
   selectActor(actor) {
-    console.log(actor)
     this.setState({ actor })
   }
   getAllActors() {
@@ -49,8 +48,8 @@ export default class App extends Component {
     return (this.state.movies.length === 0) ? (<div><Loading /></div>) : (
       <div>
         <Header actors={this.getAllActors()} selectActor={this.selectActor.bind(this)} />
-
-        <MovieList normalisedData = {this.getActorsObject()} allMovies= {this.state.movies} actorName = {this.state.actor}/>
+        <hr />
+        <MovieList normalisedData={this.getActorsObject()} allMovies={this.state.movies} actorName={this.state.actor} />
 
       </div>
     )
