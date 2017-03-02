@@ -3,25 +3,30 @@ import Header from './header'
 import Loading from './Loading'
 import MovieList from './movie-list'
 import axios from 'axios'
-const rootUri = `https://movie-api-atlrumqzze.now.sh/movies-ref`
+
 
 export default class App extends Component {
   constructor() {
     super()
     this.state = { movies: [], actor: 'all' }
-    this.fetchMovies()
+
+  }
+
+  componentDidMount() {
+    this.fetchMovies().then(({data}) => {
+      this.setState({ movies: data })
+    })
   }
 
   fetchMovies() {
-    return axios.get(rootUri).then(({data}) => {
-      this.setState({ movies: data })
-    })
+    const rootUri = `https://movie-api-atlrumqzze.now.sh/movies-ref`
+    return axios.get(rootUri)
   }
   selectActor(actor) {
     this.setState({ actor })
   }
   getAllActors(inputMovies) {
-   const movies = inputMovies || this.state.movies
+    const movies = inputMovies || this.state.movies
     const allActors = []
     movies.forEach((movie) => {
       movie.actors.forEach((actor) => {
@@ -33,12 +38,12 @@ export default class App extends Component {
   }
   getActorsObject(inputMovies) {
     const movies = inputMovies || this.state.movies
-    const allActors = this.getAllActors() 
+    const allActors = this.getAllActors()
     const actorsObject = {}
     allActors.forEach((actor) => {
       actorsObject[actor] = []
     })
-    
+
     movies.forEach((movie) => {
       movie.actors.map((actor) => {
         actorsObject[actor].push(movie)

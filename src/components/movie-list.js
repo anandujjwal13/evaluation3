@@ -1,7 +1,7 @@
 import React from 'react';
 import ListItem from './list-item'
 
-const getColor = (rating) => {
+export const getColor = (rating) => {
   if (rating === 5) return 'green'
   if (rating === 3 || rating === 4) return 'blue'
   return 'red'
